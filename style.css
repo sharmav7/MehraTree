@@ -1,0 +1,19 @@
+body {
+  font-family: Arial;
+  text-align: center;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 0.6;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  fill: steelblue;
+}
+
+.node text {
+  font-size: 12px;
+}

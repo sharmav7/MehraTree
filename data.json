@@ -1,0 +1,19 @@
+{
+  "name": "Grandfather",
+  "children": [
+    {
+      "name": "Father",
+      "children": [
+        { "name": "You" },
+        { "name": "Sibling" }
+      ]
+    },
+    {
+      "name": "Uncle",
+      "children": [
+        { "name": "Cousin1" },
+        { "name": "Cousin2" }
+      ]
+    }
+  ]
+}

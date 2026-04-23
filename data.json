@@ -1,19 +1,96 @@
 {
-  "name": "Grandfather",
+  "name": "Badri Prasad Sharma",
   "children": [
     {
-      "name": "Father",
+      "name": "Balwant Prasad Sharma",
       "children": [
-        { "name": "You" },
-        { "name": "Sibling" }
+        {
+          "name": "Ramdutt Sharma"
+        },
+        {
+          "name": "Vrindavan Sharma"
+        },
+        {
+          "name": "Baburam Sharma"
+        },
+        {
+          "name": "Bhagwat Dayal Sharma"
+        },
+        {
+          "name": "Sukhrani"
+        },
+        {
+          "name": "Badi Jiji"
+        }
       ]
     },
     {
-      "name": "Uncle",
+      "name": "Harekrishna Sharma",
       "children": [
-        { "name": "Cousin1" },
-        { "name": "Cousin2" }
+        {
+          "name": "Bhawani Shankar Sharma",
+          "children": [
+            { "name": "Ashok" },
+            { "name": "Usha" },
+            { "name": "Sarojini" }
+          ]
+        },
+        {
+          "name": "Kedar Nath Sharma",
+          "children": [
+            { "name": "Shriharsh" },
+            { "name": "Ramesh" },
+            { "name": "Raghvendra (Pappu)" },
+            { "name": "Pushpa" }
+          ]
+        },
+        {
+          "name": "Uma Shankar Sharma",
+          "children": [
+            {
+              "name": "Mukesh Sharma",
+              "children": [
+                { "name": "Vikas Sharma"},
+                { "name": "Ankita Sharma" }
+              ]
+            },
+            {
+              "name": "Neelesh Sharma",
+              "children": [
+                { "name": "Mradul Sharma" },
+                { "name": "Praful Sharma" }
+              ]
+            },
+            {
+              "name": "Manju Sharma",
+              "children": [
+                { "name": "Shashank Sharma" },
+                { "name": "Mayank Sharma" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Girija Shankar Sharma",
+          "children": [
+            { "name": "Santosh" },
+            { "name": "Satish" }
+          ]
+        },
+        {
+          "name": "Durga Shankar Sharma",
+          "children": [
+            { "name": "Shekhar" },
+            { "name": "Umesh" },
+            { "name": "Yogesh" }
+          ]
+        },
+        { "name": "Kailashi" },
+        { "name": "Shrikunwar" },
+        { "name": "Phoola" }
       ]
-    }
+    },
+    { "name": "Katori Devi" },
+    { "name": "Jal Devi" }
   ]
 }

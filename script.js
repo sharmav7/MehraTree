@@ -4,13 +4,12 @@ const marginBottom = 20;
 const marginLeft = 40;
 
 const width = window.innerWidth;
-const height = window.innerHeight;
 
 d3.json("data.json").then(data => {
 
   const root = d3.hierarchy(data);
 
-  const dx = 20+15; // 20 for node size + 15 for spacing
+  const dx = 50; // spacing (adjust if needed)
   const dy = (width - marginRight - marginLeft) / (1 + root.height);
 
   const tree = d3.tree().nodeSize([dx, dy]);
@@ -22,7 +21,6 @@ d3.json("data.json").then(data => {
   const svg = d3.select("svg")
     .attr("width", width)
     .style("max-width", "100%")
-    .style("height", "auto")
     .style("font", "12px sans-serif")
     .style("user-select", "none");
 
@@ -43,34 +41,36 @@ d3.json("data.json").then(data => {
     const nodes = root.descendants();
     const links = root.links();
 
-    // ✅ REAL bounds
+    // ---- BOUNDS ----
     let minX = Infinity;
     let maxX = -Infinity;
     let minY = Infinity;
     let maxY = -Infinity;
 
     root.each(node => {
-      if (node.x < minX) minX = node.x;
-      if (node.x > maxX) maxX = node.x;
-      if (node.y < minY) minY = node.y;
-      if (node.y > maxY) maxY = node.y;
+      minX = Math.min(minX, node.x);
+      maxX = Math.max(maxX, node.x);
+      minY = Math.min(minY, node.y);
+      maxY = Math.max(maxY, node.y);
     });
 
     const treeWidth = maxY - minY;
     const treeHeight = maxX - minX;
 
-    // ✅ CENTER BOTH AXES
+    const padding = 100;
+
+    const svgHeight = treeHeight + padding;
+
     const offsetX = (width - treeWidth) / 2;
-    const offsetY = (height - treeHeight) / 2;
 
     svg.transition()
       .duration(duration)
-      .attr("height", height)
+      .attr("height", svgHeight)
       .attr("viewBox", [
         minY - offsetX,
-        minX - offsetY,
+        minX - padding / 2,
         width,
-        height
+        svgHeight
       ]);
 
     // ---- NODES ----
@@ -83,65 +83,58 @@ d3.json("data.json").then(data => {
       .attr("stroke-opacity", 0)
       .on("click", (event, d) => {
 
-  function collapseAll(node) {
-    if (node.children) {
-      node._children = node.children;
-      node._children.forEach(collapseAll);
-      node.children = null;
-    }
-  }
+        function collapseAll(node) {
+          if (node.children) {
+            node._children = node.children;
+            node._children.forEach(collapseAll);
+            node.children = null;
+          }
+        }
 
-  if (d.children) {
-    // collapse current node
-    d._children = d.children;
-    d.children = null;
-  } else {
-    // expand ONLY one level
-    d.children = d._children;
-    d._children = null;
+        if (d.children) {
+          d._children = d.children;
+          d.children = null;
+        } else {
+          d.children = d._children;
+          d._children = null;
 
-    // 🔥 CRITICAL: collapse everything below
-    d.children.forEach(child => {
-      collapseAll(child);
-    });
-  }
+          d.children.forEach(child => collapseAll(child));
+        }
 
-  update(event, d);
-});
+        update(event, d);
+      });
 
     nodeEnter.append("circle")
       .attr("r", 3)
       .attr("fill", d => d._children ? "#555" : "#999");
 
     nodeEnter.append("text")
-  .attr("dy", "0.31em")
-  .attr("x", d => d._children ? -8 : 8)
-  .attr("text-anchor", d => d._children ? "end" : "start")
-  .each(function(d) {
-    const text = d3.select(this);
+      .attr("dy", "0.31em")
+      .attr("x", d => d._children ? -8 : 8)
+      .attr("text-anchor", d => d._children ? "end" : "start")
+      .each(function(d) {
+        const text = d3.select(this);
 
-    // 👇 MAIN NAME + NICKNAME
-    const displayName = d.data.nickname
-      ? `${d.data.name} (${d.data.nickname})`
-      : d.data.name;
+        const displayName = d.data.nickname
+          ? `${d.data.name} (${d.data.nickname})`
+          : d.data.name;
 
-    text.append("tspan")
-      .text(displayName);
+        text.append("tspan")
+          .style("font-weight", d.depth === 0 ? "600" : "400")
+          .text(displayName);
 
-    // 👇 SPOUSE
-    if (d.data.spouse) {
-      text.append("tspan")
-        .attr("x", d._children ? -8 : 8)
-        .attr("dy", "1.2em")
-        .style("font-size", "10px")
-        .style("fill", "#666")
-        .style("font-weight", d => d.depth === 0 ? "600" : "400")
-        .text(`+ ${d.data.spouse}`);
-    }
-  })
-  .attr("stroke", "white")
-  .attr("stroke-width", 3)
-  .attr("paint-order", "stroke");
+        if (d.data.spouse) {
+          text.append("tspan")
+            .attr("x", d._children ? -8 : 8)
+            .attr("dy", "1.2em")
+            .style("font-size", "10px")
+            .style("fill", "#666")
+            .text(`+ ${d.data.spouse}`);
+        }
+      })
+      .attr("stroke", "white")
+      .attr("stroke-width", 3)
+      .attr("paint-order", "stroke");
 
     node.merge(nodeEnter)
       .transition()

@@ -9,7 +9,7 @@ d3.json("data.json").then(data => {
 
   const root = d3.hierarchy(data);
 
-  const dx = 50; // spacing (adjust if needed)
+  const dx = 50;
   const dy = (width - marginRight - marginLeft) / (1 + root.height);
 
   const tree = d3.tree().nodeSize([dx, dy]);
@@ -24,14 +24,26 @@ d3.json("data.json").then(data => {
     .style("font", "12px sans-serif")
     .style("user-select", "none");
 
-  const gLink = svg.append("g")
+  // 👉 ZOOM WRAPPER
+  const g = svg.append("g");
+
+  const gLink = g.append("g")
     .attr("fill", "none")
     .attr("stroke", "#555")
     .attr("stroke-opacity", 0.4)
     .attr("stroke-width", 1.5);
 
-  const gNode = svg.append("g")
+  const gNode = g.append("g")
     .attr("cursor", "pointer");
+
+  // 👉 ZOOM BEHAVIOR
+  const zoom = d3.zoom()
+    .scaleExtent([0.5, 2]) // min/max zoom
+    .on("zoom", (event) => {
+      g.attr("transform", event.transform);
+    });
+
+  svg.call(zoom);
 
   function update(event, source) {
     const duration = 250;
@@ -58,7 +70,6 @@ d3.json("data.json").then(data => {
     const treeHeight = maxX - minX;
 
     const padding = 100;
-
     const svgHeight = treeHeight + padding;
 
     const offsetX = (width - treeWidth) / 2;
@@ -97,7 +108,6 @@ d3.json("data.json").then(data => {
         } else {
           d.children = d._children;
           d._children = null;
-
           d.children.forEach(child => collapseAll(child));
         }
 

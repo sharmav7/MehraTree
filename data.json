@@ -1,96 +1,99 @@
 {
+  "id": "badri_prasad",
   "name": "Badri Prasad Sharma",
   "children": [
     {
+      "id": "balwant_prasad",
       "name": "Balwant Prasad Sharma",
       "children": [
-        {
-          "name": "Ramdutt Sharma"
-        },
-        {
-          "name": "Vrindavan Sharma"
-        },
-        {
-          "name": "Baburam Sharma"
-        },
-        {
-          "name": "Bhagwat Dayal Sharma"
-        },
-        {
-          "name": "Sukhrani"
-        },
-        {
-          "name": "Badi Jiji"
-        }
+        { "id": "ramdutt", "name": "Ramdutt Sharma" },
+        { "id": "vrindavan", "name": "Vrindavan Sharma" },
+        { "id": "baburam", "name": "Baburam Sharma" },
+        { "id": "bhagwat_dayal", "name": "Bhagwat Dayal Sharma" },
+        { "id": "sukhrani", "name": "Sukhrani" },
+        { "id": "badi_jiji", "name": "Badi Jiji" }
       ]
     },
     {
+      "id": "harekrishna",
       "name": "Harekrishna Sharma",
       "children": [
         {
+          "id": "bhawani_shankar",
           "name": "Bhawani Shankar Sharma",
           "children": [
-            { "name": "Ashok" },
-            { "name": "Usha" },
-            { "name": "Sarojini" }
+            { "id": "ashok", "name": "Ashok Sharma" },
+            { "id": "usha", "name": "Usha" },
+            { "id": "sarojini", "name": "Sarojini" }
           ]
         },
         {
+          "id": "kedar_nath",
           "name": "Kedar Nath Sharma",
           "children": [
-            { "name": "Shriharsh" },
-            { "name": "Ramesh" },
-            { "name": "Raghvendra (Pappu)" },
-            { "name": "Pushpa" }
+            { "id": "shriharsh", "name": "Shriharsh" },
+            { "id": "ramesh", "name": "Ramesh" },
+            {
+              "id": "raghvendra",
+              "name": "Raghvendra Sharma",
+              "nickname": "Pappu"
+            },
+            { "id": "pushpa", "name": "Pushpa" }
           ]
         },
         {
+          "id": "uma_shankar",
           "name": "Uma Shankar Sharma",
           "children": [
             {
+              "id": "mukesh",
               "name": "Mukesh Sharma",
               "children": [
-                { "name": "Vikas Sharma"},
-                { "name": "Ankita Sharma" }
+                { "id": "vikas", "name": "Vikas Sharma" },
+                { "id": "ankita", "name": "Ankita Sharma" }
               ]
             },
             {
+              "id": "neelesh",
               "name": "Neelesh Sharma",
               "children": [
-                { "name": "Mradul Sharma" },
-                { "name": "Praful Sharma" }
+                { "id": "mradul", "name": "Mradul Sharma" },
+                { "id": "praful", "name": "Praful Sharma" }
               ]
             },
             {
+              "id": "manju",
               "name": "Manju Sharma",
               "children": [
-                { "name": "Shashank Sharma" },
-                { "name": "Mayank Sharma" }
+                { "id": "shashank", "name": "Shashank Sharma" },
+                { "id": "mayank", "name": "Mayank Sharma" }
               ]
             }
           ]
         },
         {
+          "id": "girija_shankar",
           "name": "Girija Shankar Sharma",
           "children": [
-            { "name": "Santosh" },
-            { "name": "Satish" }
+            { "id": "santosh", "name": "Santosh" },
+            { "id": "satish", "name": "Satish" }
           ]
         },
         {
+          "id": "durga_shankar",
           "name": "Durga Shankar Sharma",
           "children": [
-            { "name": "Shekhar" },
-            { "name": "Umesh" },
-            { "name": "Yogesh" }
+            { "id": "shekhar", "name": "Shekhar" },
+            { "id": "umesh", "name": "Umesh" },
+            { "id": "yogesh", "name": "Yogesh" }
           ]
         },
-        { "name": "Kailashi" },
-        { "name": "Shrikunwar" },
-        { "name": "Phoola" }
+        { "id": "kailashi", "name": "Kailashi" },
+        { "id": "shrikunwar", "name": "Shrikunwar" },
+        { "id": "phoola", "name": "Phoola" }
       ]
     },
-    { "name": "Katori Devi" },
-    { "name": "Jal Devi" }
+    { "id": "katori_devi", "name": "Katori Devi" },
+    { "id": "jal_devi", "name": "Jal Devi" }
   ]
 }

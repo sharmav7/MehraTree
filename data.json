@@ -31,8 +31,8 @@
           "id": "kedar_nath",
           "name": "Kedar Nath Sharma",
           "children": [
-            { "id": "shriharsh", "name": "Shriharsh" },
-            { "id": "ramesh", "name": "Ramesh" },
+            { "id": "shriharsh", "name": "Shriharsh Sharma" },
+            { "id": "ramesh", "name": "Ramesh Sharma" },
             {
               "id": "raghvendra",
               "name": "Raghvendra Sharma",
@@ -44,29 +44,33 @@
         {
           "id": "uma_shankar",
           "name": "Uma Shankar Sharma",
+          "spouse": "Omshree Sharma",
           "children": [
             {
               "id": "mukesh",
               "name": "Mukesh Sharma",
+              "spouse": "Kiran Sharma",
               "children": [
-                { "id": "vikas", "name": "Vikas Sharma" },
-                { "id": "ankita", "name": "Ankita Sharma" }
+                { "id": "vikas", "name": "Vikas Sharma", "nickname": "Micky", "spouse": "Varsha Sharma" },
+                { "id": "ankita", "name": "Ankita Sharma", "nickname": "Bulbul", "spouse": "Ram Sharma" }
               ]
             },
             {
               "id": "neelesh",
               "name": "Neelesh Sharma",
+              "spouse": "Kalpana Sharma",
               "children": [
-                { "id": "mradul", "name": "Mradul Sharma" },
-                { "id": "praful", "name": "Praful Sharma" }
+                { "id": "mradul", "name": "Mradul Sharma", "nickname": "Ranu" },
+                { "id": "praful", "name": "Praful Sharma", "nickname": "Rishi" }
               ]
             },
             {
               "id": "manju",
               "name": "Manju Sharma",
+              "spouse": "Dinesh Sharma",
               "children": [
-                { "id": "shashank", "name": "Shashank Sharma" },
-                { "id": "mayank", "name": "Mayank Sharma" }
+                { "id": "shashank", "name": "Shashank Sharma", "nickname": "Sunny" },
+                { "id": "mayank", "name": "Mayank Sharma", "nickname": "Honey" }
               ]
             }
           ]
@@ -75,17 +79,17 @@
           "id": "girija_shankar",
           "name": "Girija Shankar Sharma",
           "children": [
-            { "id": "santosh", "name": "Santosh" },
-            { "id": "satish", "name": "Satish" }
+            { "id": "santosh", "name": "Santosh Sharma" },
+            { "id": "satish", "name": "Satish Sharma" }
           ]
         },
         {
           "id": "durga_shankar",
           "name": "Durga Shankar Sharma",
           "children": [
-            { "id": "shekhar", "name": "Shekhar" },
-            { "id": "umesh", "name": "Umesh" },
-            { "id": "yogesh", "name": "Yogesh" }
+            { "id": "shekhar", "name": "Shekhar Sharma" },
+            { "id": "umesh", "name": "Umesh Sharma" },
+            { "id": "yogesh", "name": "Yogesh Sharma" }
           ]
         },
         { "id": "kailashi", "name": "Kailashi" },

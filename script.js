@@ -10,7 +10,7 @@ d3.json("data.json").then(data => {
 
   const root = d3.hierarchy(data);
 
-  const dx = 25;
+  const dx = 20+15; // 20 for node size + 15 for spacing
   const dy = (width - marginRight - marginLeft) / (1 + root.height);
 
   const tree = d3.tree().nodeSize([dx, dy]);
@@ -82,26 +82,66 @@ d3.json("data.json").then(data => {
       .attr("fill-opacity", 0)
       .attr("stroke-opacity", 0)
       .on("click", (event, d) => {
-        d.children = d.children ? null : d._children;
-        update(event, d);
-      });
+
+  function collapseAll(node) {
+    if (node.children) {
+      node._children = node.children;
+      node._children.forEach(collapseAll);
+      node.children = null;
+    }
+  }
+
+  if (d.children) {
+    // collapse current node
+    d._children = d.children;
+    d.children = null;
+  } else {
+    // expand ONLY one level
+    d.children = d._children;
+    d._children = null;
+
+    // 🔥 CRITICAL: collapse everything below
+    d.children.forEach(child => {
+      collapseAll(child);
+    });
+  }
+
+  update(event, d);
+});
 
     nodeEnter.append("circle")
       .attr("r", 3)
       .attr("fill", d => d._children ? "#555" : "#999");
 
     nodeEnter.append("text")
-      .attr("dy", "0.31em")
-      .attr("x", d => d._children ? -8 : 8)
-      .attr("text-anchor", d => d._children ? "end" : "start")
-      .text(d =>
-        d.data.nickname
-          ? `${d.data.name} (${d.data.nickname})`
-          : d.data.name
-      )
-      .attr("stroke", "white")
-      .attr("stroke-width", 3)
-      .attr("paint-order", "stroke");
+  .attr("dy", "0.31em")
+  .attr("x", d => d._children ? -8 : 8)
+  .attr("text-anchor", d => d._children ? "end" : "start")
+  .each(function(d) {
+    const text = d3.select(this);
+
+    // 👇 MAIN NAME + NICKNAME
+    const displayName = d.data.nickname
+      ? `${d.data.name} (${d.data.nickname})`
+      : d.data.name;
+
+    text.append("tspan")
+      .text(displayName);
+
+    // 👇 SPOUSE
+    if (d.data.spouse) {
+      text.append("tspan")
+        .attr("x", d._children ? -8 : 8)
+        .attr("dy", "1.2em")
+        .style("font-size", "10px")
+        .style("fill", "#666")
+        .style("font-weight", d => d.depth === 0 ? "600" : "400")
+        .text(`+ ${d.data.spouse}`);
+    }
+  })
+  .attr("stroke", "white")
+  .attr("stroke-width", 3)
+  .attr("paint-order", "stroke");
 
     node.merge(nodeEnter)
       .transition()

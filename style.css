@@ -1,17 +1,32 @@
 body {
-  font-family: Arial;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   text-align: center;
+  background: #fafafa;
+  margin: 0;
+  background-image: radial-gradient(#eaeaea 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+svg {
+  font-size: 13px;
 }
 
 .link {
   fill: none;
-  stroke: #555;
+  stroke: #bbb;
   stroke-opacity: 0.6;
   stroke-width: 1.5px;
+  stroke-linecap: round;
 }
 
 .node circle {
+  transition: all 0.2s ease;
   fill: steelblue;
+}
+
+.node:hover circle {
+  r: 5;
+  fill: #333;
 }
 
 .node text {
